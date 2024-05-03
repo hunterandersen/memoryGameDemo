@@ -9,6 +9,10 @@ ul {
   padding: 0;
 }
 
-li img {
+.currentImage {
+  max-width: 500px;
+}
+
+img {
   width: 100%;
 }
