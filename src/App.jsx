@@ -8,9 +8,12 @@ function App() {
   const [seenImages, setSeenImages] = useState([]);
   const [memoryCount, setMemoryCount] = useState(0);
   const [hasLost, setHasLost] = useState(false);
+  const [lastImage, setLastImage] = useState(-1);
 
   function validateMemory(userGuess) {
     const hasSeenImage = seenImages.includes(currentImage);
+    setLastImage(currentImage);
+
     if (!hasSeenImage) {
       //Mark this image as having been seen
       setSeenImages([...seenImages, currentImage]);
@@ -29,8 +32,16 @@ function App() {
     setHasLost(false);
   }
 
-  const currentImage =
-    imagePaths[Math.floor(Math.random() * imagePaths.length)];
+  function getNextImage() {
+    let nextNumber = Math.floor(Math.random() * imagePaths.length);
+    while (nextNumber == lastImage) {
+      nextNumber = Math.floor(Math.random() * imagePaths.length);
+    }
+    
+    return imagePaths[nextNumber];
+  }
+
+  const currentImage = getNextImage();
 
   return (
     <>

@@ -9,10 +9,7 @@ ul {
   padding: 0;
 }
 
-.currentImage {
-  max-width: 500px;
-}
-
 img {
   width: 100%;
+  max-height: 500px;
 }
